@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-gaybearcapital-dev-105039-authRole",
+      "UnauthRoleArn": "arn:aws:iam::361500233677:role/amplify-gaybearcapital-dev-105039-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::361500233677:role/amplify-gaybearcapital-dev-105039-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-gaybearcapital-dev-105039-deployment",
+      "UnauthRoleName": "amplify-gaybearcapital-dev-105039-unauthRole",
+      "StackName": "amplify-gaybearcapital-dev-105039",
+      "StackId": "arn:aws:cloudformation:us-east-1:361500233677:stack/amplify-gaybearcapital-dev-105039/e4ef3cd0-c868-11eb-9f3e-12602f672e4f",
+      "AmplifyAppId": "d2hpme5i8nne2j"
+    }
+  }
+}

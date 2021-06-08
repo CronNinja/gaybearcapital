@@ -1,38 +1,130 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  font-family: "Quicksand";
+  color: #333;
+}
+.navbar {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+  border-bottom: 1px solid #f2f2f2;
+}
+.navbar h1 {
+  color: #5a2f3c;
+}
+.navbar .links {
+  margin-left: auto;
+}
+.navbar a {
+  text-decoration: none;
+  padding: 6px;
+}
+.navbar a:hover {
+  color: #5a2f3c;
+}
+.content {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+/* crypto previews / list */
+.crypto-preview {
+  padding: 10px 16px;
+  margin: 20px 0;
+  border-bottom: 1px solid #fafafa;
+}
+.crypto-preview:hover {
+  box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
+}
+.crypto-preview h2 {
+  font-size: 20px;
+  color: #5a2f3c;
+  margin-bottom: 8px;
+}
+.crypto-preview a{
+  text-decoration: none;
+}
+/* crypto-details */
+.crypto-details h2 {
+  font-size: 30px;
+  color:#5a2f3c;
+  margin-bottom: 10px;
+}
+.crypto-details-price {
+  font-size: 15px;
+  color:#4c8536a2;
+  margin-bottom: 10px;
+}
+.crypto-details h3 {
+  font-size: 20px;
+  color:#5a2f3ca2;
+  margin-bottom: 10px;
+}
+.crypto-details div {
+  margin: 20px 0;
+}
+
+.crypto-details button {
+  background: #5a2f3c;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+li {
+  display: inline;
+  list-style: none;
+  padding: 0px 0 2px 25px;
+  left: 0;
+}
+
+li::before {
+  position: absolute;
+  top: 6px;
+  left: 0;
+}
+
+li:first-child {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* form */
+.form {
+  max-width: 400px;
+  margin: 0 auto;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.form label {
+  text-align: left;
+  display: block;
+}
+.form h2 {
+  font-size: 20px;
+  color: #5a2f3c;
+  margin-bottom: 30px;
+}
+.form input, .form textarea, .form select {
+  width: 100%;
+  padding: 6px 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  display: block;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Error Text */
+.error-text{
+  color: red;
 }
