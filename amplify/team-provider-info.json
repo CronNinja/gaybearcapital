@@ -10,6 +10,11 @@
       "StackName": "amplify-gaybearcapital-dev-105039",
       "StackId": "arn:aws:cloudformation:us-east-1:361500233677:stack/amplify-gaybearcapital-dev-105039/e4ef3cd0-c868-11eb-9f3e-12602f672e4f",
       "AmplifyAppId": "d2hpme5i8nne2j"
+    },
+    "categories": {
+      "auth": {
+        "gaybearcapitalf8cc7ab8": {}
+      }
     }
   }
 }
