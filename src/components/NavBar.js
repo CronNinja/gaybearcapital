@@ -1,5 +1,6 @@
 import { Container, Navbar, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
+import { AmplifySignOut } from '@aws-amplify/ui-react';
 
 const NavBar = () => {
     return (
@@ -19,6 +20,7 @@ const NavBar = () => {
           <Button variant="primary">
             Cart
         </Button>
+        <AmplifySignOut />
         </Container>
       </Navbar>
     );

@@ -1,0 +1,8 @@
+type inventory @model {
+  id: ID!
+  name: String!
+  description: String
+  size: String
+  price: String
+  type: String
+}
