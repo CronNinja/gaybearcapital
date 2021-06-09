@@ -41,7 +41,7 @@ const InventoryCreate = () => {
 
   return (
     <div className="form">
-      <h2>GBC Inventory</h2>
+      <h2>Add to Inventory</h2>
       <input
         onChange={event => setInput('name', event.target.value)}
         value={formState.name}

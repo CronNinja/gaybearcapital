@@ -1,6 +1,5 @@
-import { Container, Navbar, Button } from 'react-bootstrap';
+import { Container, Navbar, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { AmplifySignOut } from '@aws-amplify/ui-react';
 
 const NavBar = () => {
     return (
@@ -16,11 +15,10 @@ const NavBar = () => {
           />{' '}
           Gay Bear Capital
         </Navbar.Brand>
-          <Link to="/inventory">Inventory</Link>
-          <Button variant="primary">
-            Cart
-        </Button>
-        <AmplifySignOut />
+        <NavDropdown  title="Inventory" id="basic-nav-dropdown">
+            <NavDropdown.Item to="/inventory" as={ Link }>View</NavDropdown.Item>
+            <NavDropdown.Item to="/inventory/create" as={ Link } >Create</NavDropdown.Item>
+          </NavDropdown>
         </Container>
       </Navbar>
     );
