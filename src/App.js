@@ -2,9 +2,9 @@ import NavBar from './components/NavBar';
 import Home from './pages/Home';
 import { BrowserRouter as Router , Route, Switch} from 'react-router-dom';
 import Inventory from './pages/Inventory';
-import { Auth } from 'aws-amplify';
-import awsconfig from './aws-exports';
-Auth.configure(awsconfig);
+import Amplify from "aws-amplify";
+import awsExports from "./aws-exports";
+Amplify.configure(awsExports);
 
 function App() {
 
