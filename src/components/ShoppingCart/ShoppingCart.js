@@ -2,13 +2,12 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import ShoppingCartBody from './ShoppingCartBody';
 import { useHistory } from 'react-router-dom';
-import { useState } from 'react';
 import { DataStore } from '@aws-amplify/datastore';
 import { StoreItems } from '../../models';
 
 const ShoppingCart = ({handleShowClose, showCart, cart, setCart }) => {
   const history = useHistory();
-  const [loading, setLoading] = useState(false);
+
   const clearCart = () => {
     setCart([]);
     handleShowClose();
@@ -29,7 +28,6 @@ const ShoppingCart = ({handleShowClose, showCart, cart, setCart }) => {
     }
   }
   const checkOut = () => {
-    setLoading(true);
     cart.map((item) => {
       return updateItem(item.id, item.quantity); 
     });

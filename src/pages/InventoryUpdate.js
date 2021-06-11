@@ -37,7 +37,7 @@ const InventoryUpdate = () => {
         try {
             setLoading(true);
             const original = await DataStore.query(StoreItems, id);
-            const update = await DataStore.save(
+            await DataStore.save(
                 StoreItems.copyOf(original, updated => {
                     updated.name = formState.name
                     updated.description = formState.description
@@ -109,12 +109,14 @@ const InventoryUpdate = () => {
                 step='0.01'
                 onChange={event => setInput('price', event.target.value)}
                 value={formState.price}
+                min="0"
             />
             <label>Quantity</label>
             <input
                 type="number"
                 onChange={event => setInput('quantity', event.target.value)}
                 value={formState.quantity}
+                min="0"
                 
             />
             <Button onClick={updateItem}>Update Item</Button>

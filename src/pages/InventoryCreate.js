@@ -70,12 +70,14 @@ const InventoryCreate = () => {
         step='0.01'
         onChange={event => setInput('price', event.target.value)}
         value={formState.price}
+        min="0"
       />
       <label>Quantity</label>
       <input
         type="number"
         onChange={event => setInput('quantity', event.target.value)}
         value={formState.quantity}
+        min="0"
         
       />
       <Button onClick={addItem}>Add Item</Button>
