@@ -9,6 +9,7 @@ import StoreItem from './pages/StoreItem';
 import InventoryUpdate from './pages/InventoryUpdate';
 import { useState } from 'react';
 import ShoppingCart from './components/ShoppingCart/ShoppingCart';
+import Login from './pages/Login';
 
 Amplify.configure(awsExports);
 
@@ -59,6 +60,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Home />
+          </Route>
+          <Route exact path="/login">
+            <Login />
           </Route>
           <Route exact path="/inventory">
             <Inventory cart={ cart } setCart={ setCart }/>

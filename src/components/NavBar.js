@@ -3,7 +3,7 @@ import { Container, Navbar, NavDropdown, Button } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import UserDropdown from './UserDropdown';
 
-const NavBar = ({isAuthenticated, userHasAuthenticated, handleShowOpen, cart}) => {
+const NavBar = ({isAuthenticated, handleShowOpen, cart}) => {
   const history = useHistory();
   async function handleLogout() {
     await Auth.signOut();
@@ -27,7 +27,7 @@ const NavBar = ({isAuthenticated, userHasAuthenticated, handleShowOpen, cart}) =
             <NavDropdown.Item to="/inventory/create" as={ Link } >Create</NavDropdown.Item>
           </NavDropdown>
           {
-            isAuthenticated && <UserDropdown handleLogout={ handleLogout }/>
+            isAuthenticated ? <UserDropdown handleLogout={ handleLogout } /> : <Link to="/login">Login</Link>
           }
           {
             cart.length > 0 &&
