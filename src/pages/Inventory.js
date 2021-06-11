@@ -1,35 +1,36 @@
-import { API, graphqlOperation } from 'aws-amplify';
-import { useEffect, useState } from 'react';
-import { listInventorys } from '../graphql/queries';
+import { DataStore } from '@aws-amplify/datastore';
+import { StoreItems } from '../models';
+import { useState, useEffect } from 'react';
+import StoreItemsList from '../components/StoreItems/StoreItemsList';
 
 const Inventory = () => {
-   const [inventorys, setInventorys] = useState([])
-
+   const [items, setItems] = useState([]);
   useEffect(() => {
-    fetchInventorys()
-  }, [])
+    let mounted = true;
+    fetchItems().then((items) => {
+      if(mounted){
+        setItems(items);
+      }
+    })
+    return () => { mounted = false }
+  })
 
-  async function fetchInventorys() {
+  async function fetchItems() {
     try {
-      const inventoryData = await API.graphql(graphqlOperation(listInventorys))
-      const inventorys = inventoryData.data.listInventorys.items
-      setInventorys(inventorys)
-    } catch (err) { console.log('error fetching inventorys') }
+      const items = await DataStore.query(StoreItems);
+      return items;
+    } catch (err) {
+      console.log('error fetching items');
+      return [];
+    }
   }
+
 
   return (
     <div className="home">
-      {
-        inventorys.map((inventory, index) => (
-          <div key={inventory.id ? inventory.id : index}>
-            <p>{inventory.name}</p>
-            <p >{inventory.description}</p>
-          </div>
-        ))
-      }
+      <StoreItemsList items={ items } />
     </div>
   )
 }
-
  
 export default Inventory;

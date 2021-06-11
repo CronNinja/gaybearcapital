@@ -1,8 +1,14 @@
-type inventory @model {
+type StoreItems @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String!
   description: String
   size: String
-  price: String
+  price: Float
   type: String
+  quantity: Int
+}
+
+enum PostStatus {
+  DRAFT
+  PUBLISHED
 }

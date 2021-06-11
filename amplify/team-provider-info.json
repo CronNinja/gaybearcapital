@@ -13,7 +13,8 @@
     },
     "categories": {
       "auth": {
-        "gaybearcapitalf8cc7ab8": {}
+        "gaybearcapitalf8cc7ab8": {},
+        "userPoolGroups": {}
       }
     }
   }

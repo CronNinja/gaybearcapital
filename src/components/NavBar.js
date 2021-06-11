@@ -1,7 +1,12 @@
+import { Auth } from 'aws-amplify';
 import { Container, Navbar, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import UserDropdown from './UserDropdown';
 
-const NavBar = () => {
+const NavBar = ({isAuthenticated, userHasAuthenticated}) => {
+  async function handleLogout() {
+    await Auth.signOut();
+  }
     return (
       <Navbar>
         <Container>
@@ -15,10 +20,13 @@ const NavBar = () => {
           />{' '}
           Gay Bear Capital
         </Navbar.Brand>
-        <NavDropdown  title="Inventory" id="basic-nav-dropdown">
+          <NavDropdown  title="Inventory" id="basic-nav-dropdown">
             <NavDropdown.Item to="/inventory" as={ Link }>View</NavDropdown.Item>
             <NavDropdown.Item to="/inventory/create" as={ Link } >Create</NavDropdown.Item>
           </NavDropdown>
+          {
+            isAuthenticated && <UserDropdown handleLogout={ handleLogout }/>
+          }
         </Container>
       </Navbar>
     );
