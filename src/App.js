@@ -62,7 +62,7 @@ function App() {
             <Home />
           </Route>
           <Route exact path="/login">
-            <Login />
+            <Login userHasAuthenticated={userHasAuthenticated}/>
           </Route>
           <Route exact path="/inventory">
             <Inventory cart={ cart } setCart={ setCart }/>

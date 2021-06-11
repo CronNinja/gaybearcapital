@@ -1,7 +1,8 @@
 import { withAuthenticator  } from '@aws-amplify/ui-react';
 import { useHistory } from 'react-router';
-const Login = () => {
+const Login = ({userHasAuthenticated}) => {
    const history = useHistory();
+   userHasAuthenticated(true);
    history.push("/");
     return (
         <div className="home">
