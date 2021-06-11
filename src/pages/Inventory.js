@@ -3,7 +3,7 @@ import { StoreItems } from '../models';
 import { useState, useEffect } from 'react';
 import StoreItemsList from '../components/StoreItems/StoreItemsList';
 
-const Inventory = () => {
+const Inventory = ({ cart, setCart}) => {
    const [items, setItems] = useState([]);
   useEffect(() => {
     let mounted = true;
@@ -28,7 +28,7 @@ const Inventory = () => {
 
   return (
     <div className="home">
-      <StoreItemsList items={ items } />
+      <StoreItemsList items={ items } cart={ cart } setCart={ setCart } />
     </div>
   )
 }

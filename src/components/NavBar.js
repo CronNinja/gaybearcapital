@@ -1,11 +1,13 @@
 import { Auth } from 'aws-amplify';
-import { Container, Navbar, NavDropdown } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Container, Navbar, NavDropdown, Button } from 'react-bootstrap';
+import { Link, useHistory } from 'react-router-dom';
 import UserDropdown from './UserDropdown';
 
-const NavBar = ({isAuthenticated, userHasAuthenticated}) => {
+const NavBar = ({isAuthenticated, userHasAuthenticated, handleShowOpen, cart}) => {
+  const history = useHistory();
   async function handleLogout() {
     await Auth.signOut();
+    history.push("/");
   }
     return (
       <Navbar>
@@ -26,6 +28,12 @@ const NavBar = ({isAuthenticated, userHasAuthenticated}) => {
           </NavDropdown>
           {
             isAuthenticated && <UserDropdown handleLogout={ handleLogout }/>
+          }
+          {
+            cart.length > 0 &&
+              <Button variant="primary" onClick={handleShowOpen}>
+                Cart
+              </Button>
           }
         </Container>
       </Navbar>

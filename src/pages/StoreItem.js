@@ -28,7 +28,6 @@ const StoreItem = () => {
         }
     }
   
-
     return (
         <div className="item-details">
             { item && <StoreItemDetail item={ item } /> }

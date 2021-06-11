@@ -8,12 +8,17 @@ import InventoryCreate from './pages/InventoryCreate';
 import StoreItem from './pages/StoreItem';
 import InventoryUpdate from './pages/InventoryUpdate';
 import { useState } from 'react';
+import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 
 Amplify.configure(awsExports);
 
 function App() {
   const [isAuthenticated, userHasAuthenticated] = useState(false);
+  const [showCart, setShowCart] = useState(false);
+  const [cart, setCart] = useState([]);
 
+  const handleShowClose = () => setShowCart(false);
+  const handleShowOpen = () => setShowCart(true);
 
   const listener = (data) => {
       switch (data.payload.event) {
@@ -49,14 +54,14 @@ function App() {
   return (
     <Router>
       <div className="App">
-      <NavBar isAuthenticated={ isAuthenticated } userHasAuthenticated={ userHasAuthenticated }/>
+      <NavBar isAuthenticated={ isAuthenticated } userHasAuthenticated={ userHasAuthenticated } handleShowOpen={ handleShowOpen } cart={ cart }/>
       <div className="content">
         <Switch>
           <Route exact path="/">
             <Home />
           </Route>
           <Route exact path="/inventory">
-            <Inventory />
+            <Inventory cart={ cart } setCart={ setCart }/>
           </Route>
           <Route exact path="/inventory/create">
             <InventoryCreate />
@@ -68,6 +73,7 @@ function App() {
             <StoreItem />
           </Route>
          </Switch>
+         <ShoppingCart handleShowClose={ handleShowClose } showCart={ showCart } cart={ cart } setCart={ setCart }/>
       </div>
     </div>
     </Router>
