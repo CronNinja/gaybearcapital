@@ -1,14 +1,43 @@
-type StoreItems @model @auth(rules: [{allow: public}]) {
+type OrderItems @model @auth(rules: [{allow: public, operations: [create, read, update]}]) {
+  id: ID!
+  status: String
+  price: Float
+  quantity: Int
+  OrderItemsOrders: [OrderItemsOrder] @connection(keyName: "byOrderItems", fields: ["id"])
+  OrderItemsStoreItems: [OrderItemsStoreItems] @connection(keyName: "byOrderItems", fields: ["id"])
+}
+
+type Order @model @auth(rules: [{allow: public, operations: [create, read, update]}]) {
+  id: ID!
+  username: String
+  status: String!
+  orderItemsO: [OrderItemsOrder] @connection(keyName: "byOrder", fields: ["id"])
+}
+
+type StoreItems @model @auth(rules: [{allow: public, operations: [create, read, update]}]) {
   id: ID!
   name: String!
   description: String
-  size: String
   price: Float
-  type: String
   quantity: Int
+  type: String
+  size: String
+  orderItemsS: [OrderItemsStoreItems] @connection(keyName: "byStoreItems", fields: ["id"])
 }
 
-enum PostStatus {
-  DRAFT
-  PUBLISHED
+type OrderItemsOrder @model(queries: null) @key(name: "byOrder", fields: ["orderID", "orderitemsID"]) @key(name: "byOrderItems", fields: ["orderitemsID", "orderID"]) @auth(rules: [{allow: public, operations: [create, read, update]}, {allow: public, operations: [create, read, update]}]) {
+  id: ID!
+  orderID: ID!
+  orderitemsID: ID!
+  order: Order! @connection(fields: ["orderID"])
+  orderitems: OrderItems! @connection(fields: ["orderitemsID"])
 }
+
+type OrderItemsStoreItems @model(queries: null) @key(name: "byStoreItems", fields: ["storeitemsID", "orderitemsID"]) @key(name: "byOrderItems", fields: ["orderitemsID", "storeitemsID"]) @auth(rules: [{allow: public, operations: [create, read, update]}, {allow: public, operations: [create, read, update]}]) {
+  id: ID!
+  storeitemsID: ID!
+  orderitemsID: ID!
+  storeitems: StoreItems! @connection(fields: ["storeitemsID"])
+  orderitems: OrderItems! @connection(fields: ["orderitemsID"])
+}
+  

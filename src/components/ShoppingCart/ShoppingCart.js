@@ -3,7 +3,8 @@ import Modal from 'react-bootstrap/Modal';
 import ShoppingCartBody from './ShoppingCartBody';
 import { useHistory } from 'react-router-dom';
 import { DataStore } from '@aws-amplify/datastore';
-import { StoreItems } from '../../models';
+import { StoreItems, Order, OrderItems } from '../../models';
+import { Auth } from 'aws-amplify';
 
 const ShoppingCart = ({handleShowClose, showCart, cart, setCart }) => {
   const history = useHistory();
@@ -12,7 +13,6 @@ const ShoppingCart = ({handleShowClose, showCart, cart, setCart }) => {
     setCart([]);
     handleShowClose();
   }
-
   const updateItem = async (id, qty) => {
     try {
         const original = await DataStore.query(StoreItems, id);
@@ -27,12 +27,37 @@ const ShoppingCart = ({handleShowClose, showCart, cart, setCart }) => {
         return (err);
     }
   }
-  const checkOut = () => {
+  async function createOrderItem(item) {
+    try {
+      return await DataStore.save(new OrderItems({
+        status: 'Order Item Initialized',
+        price: item.price,
+        quantity: item.quantity
+      }));
+    } catch (err) {
+      console.log('error updating store items:', err);
+    }
+  }
+  async function createOrder(u) {
+    try {
+      const order = await DataStore.save(new Order({
+        username: u,
+        status: 'Order Initialized',
+        orderItemsO: []
+      }));
+      console.log(order);
+    } catch (err) {
+      console.log('error updating store items:', err);
+    }
+  }
+  async function checkOut(){
+    const u = Auth.user ? Auth.user.username : "";
     cart.map((item) => {
       return updateItem(item.id, item.quantity); 
     });
-    clearCart();
-    history.push("/inventory")
+    await createOrder(u);
+    //clearCart();
+    //history.push("/inventory")
   }
   return (
     <>

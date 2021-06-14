@@ -7,7 +7,7 @@ const UserDropdown = ({ handleLogout }) => {
         <>
             <NavDropdown  title={Auth.user.username} id="basic-nav-dropdown">
                 <NavDropdown.Item to="/account" as={ Link }>Account</NavDropdown.Item>
-                <NavDropdown.Item to="/account/history" as={ Link } >History</NavDropdown.Item>
+                <NavDropdown.Item to="/account/orders" as={ Link } >History</NavDropdown.Item>
                 <NavDropdown.Item as={ Button } onClick={ handleLogout }>Signout</NavDropdown.Item>
           </NavDropdown>
         </>

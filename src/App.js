@@ -10,6 +10,7 @@ import InventoryUpdate from './pages/InventoryUpdate';
 import { useState } from 'react';
 import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 import Login from './pages/Login';
+import OrderHistory from './pages/OrderHistory'
 
 Amplify.configure(awsExports);
 
@@ -17,6 +18,8 @@ function App() {
   const [isAuthenticated, userHasAuthenticated] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const [cart, setCart] = useState([]);
+
+  const [user, setUser] = useState();
 
   const handleShowClose = () => setShowCart(false);
   const handleShowOpen = () => setShowCart(true);
@@ -62,7 +65,7 @@ function App() {
             <Home />
           </Route>
           <Route exact path="/login">
-            <Login userHasAuthenticated={userHasAuthenticated}/>
+            <Login userHasAuthenticated={userHasAuthenticated} setUser={ setUser }/>
           </Route>
           <Route exact path="/inventory">
             <Inventory cart={ cart } setCart={ setCart }/>
@@ -75,6 +78,9 @@ function App() {
           </Route>
           <Route  path="/inventory/:id">
             <StoreItem />
+          </Route>
+          <Route  path="/account/orders">
+            <OrderHistory user={ user } />
           </Route>
          </Switch>
          <ShoppingCart handleShowClose={ handleShowClose } showCart={ showCart } cart={ cart } setCart={ setCart }/>
