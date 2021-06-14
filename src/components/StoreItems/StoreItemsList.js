@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 const StoreItemsList = ({ items, cart, setCart }) => {
   const addToCart = (item) => {
-    console.log(item.price);
     let q = 1;
     const fCart = cart.filter((i) => {
         if(i.id === item.id){
@@ -19,7 +18,6 @@ const StoreItemsList = ({ items, cart, setCart }) => {
         id: item.id
         }
     ]);
-    console.log(cart);
   }
     return (
         <div className="item-list">
