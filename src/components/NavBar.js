@@ -1,14 +1,8 @@
-import { Auth } from 'aws-amplify';
-import { Container, Navbar, NavDropdown, Button } from 'react-bootstrap';
-import { Link, useHistory } from 'react-router-dom';
-import UserDropdown from './UserDropdown';
+import { Container, Navbar } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
-const NavBar = ({isAuthenticated, handleShowOpen, cart}) => {
-  const history = useHistory();
-  async function handleLogout() {
-    await Auth.signOut();
-    history.push("/");
-  }
+const NavBar = () => {
+
     return (
       <Navbar>
         <Container>
@@ -22,19 +16,6 @@ const NavBar = ({isAuthenticated, handleShowOpen, cart}) => {
           />{' '}
           Gay Bear Capital
         </Navbar.Brand>
-          <NavDropdown  title="Inventory" id="basic-nav-dropdown">
-            <NavDropdown.Item to="/inventory" as={ Link }>View</NavDropdown.Item>
-            <NavDropdown.Item to="/inventory/create" as={ Link } >Create</NavDropdown.Item>
-          </NavDropdown>
-          {
-            isAuthenticated ? <UserDropdown handleLogout={ handleLogout } /> : <Link to="/login">Login</Link>
-          }
-          {
-            cart.length > 0 &&
-              <Button variant="primary" onClick={handleShowOpen}>
-                Cart
-              </Button>
-          }
         </Container>
       </Navbar>
     );
