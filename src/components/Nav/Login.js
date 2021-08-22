@@ -8,18 +8,18 @@ export default function Login({ props }) {
     const handleClose = () => setShow(false);
     const handleShow =  () => {
         setShow(true);
-        const payload = xummSign();
-        console.log(payload);
+        xummSign();
     }
 
     async function xummSign() {
         await fetch('https://xumm.gaybear.capital/gbc/payload', {
             method: 'GET',
+            mode: 'no-cors',
             headers: {
                 'Content-Type': 'application/json',
             }
         }).then(data => {
-            return data
+            console.log(data);
         })
     }
     return (
