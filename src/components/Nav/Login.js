@@ -12,9 +12,9 @@ export default function Login({ props }) {
     }
 
     async function xummSign() {
-        await fetch('https://xumm.gaybear.capital/gbc/payload', {
+        console.log('test')
+        await fetch('https://coincodex.com/api/coincodex/get_coin/xrp', {
             method: 'GET',
-            mode: 'no-cors',
             headers: {
                 'Content-Type': 'application/json',
             }
