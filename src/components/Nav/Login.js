@@ -13,7 +13,7 @@ export default function Login({ props }) {
 
     async function xummSign() {
         console.log('test')
-        await fetch('https://coincodex.com/api/coincodex/get_coin/xrp', {
+        await fetch('/payload', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
