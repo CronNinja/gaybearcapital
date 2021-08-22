@@ -1,4 +1,23 @@
 {
+  "gbc": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-gaybearcapital-gbc-203943-authRole",
+      "UnauthRoleArn": "arn:aws:iam::361500233677:role/amplify-gaybearcapital-gbc-203943-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::361500233677:role/amplify-gaybearcapital-gbc-203943-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-gaybearcapital-gbc-203943-deployment",
+      "UnauthRoleName": "amplify-gaybearcapital-gbc-203943-unauthRole",
+      "StackName": "amplify-gaybearcapital-gbc-203943",
+      "StackId": "arn:aws:cloudformation:us-east-1:361500233677:stack/amplify-gaybearcapital-gbc-203943/eacac890-02bf-11ec-bc6b-128e8185daf5",
+      "AmplifyAppId": "d2hpme5i8nne2j"
+    },
+    "categories": {
+      "auth": {
+        "gaybearcapitalf8cc7ab8": {},
+        "userPoolGroups": {}
+      }
+    }
+  },
   "dev": {
     "awscloudformation": {
       "AuthRoleName": "amplify-gaybearcapital-dev-105039-authRole",

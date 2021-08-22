@@ -1,8 +1,8 @@
 import { Container, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Login from './Login';
 
-const NavBar = () => {
-
+const NavBar = ({ props }) => {
     return (
       <Navbar>
         <Container>
@@ -16,6 +16,7 @@ const NavBar = () => {
           />{' '}
           Gay Bear Capital
         </Navbar.Brand>
+        { typeof(props.user.username) === "undefined" && <Login props={ props }/>}
         </Container>
       </Navbar>
     );

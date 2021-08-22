@@ -4,6 +4,18 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 
 
+type StoreItemsMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
+type OrderMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
+type OrderItemMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
 export declare class StoreItems {
   readonly id: string;
   readonly name: string;
@@ -14,8 +26,8 @@ export declare class StoreItems {
   readonly size?: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;
-  constructor(init: ModelInit<StoreItems>);
-  static copyOf(source: StoreItems, mutator: (draft: MutableModel<StoreItems>) => MutableModel<StoreItems> | void): StoreItems;
+  constructor(init: ModelInit<StoreItems, StoreItemsMetaData>);
+  static copyOf(source: StoreItems, mutator: (draft: MutableModel<StoreItems, StoreItemsMetaData>) => MutableModel<StoreItems, StoreItemsMetaData> | void): StoreItems;
 }
 
 export declare class Order {
@@ -24,8 +36,8 @@ export declare class Order {
   readonly status: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;
-  constructor(init: ModelInit<Order>);
-  static copyOf(source: Order, mutator: (draft: MutableModel<Order>) => MutableModel<Order> | void): Order;
+  constructor(init: ModelInit<Order, OrderMetaData>);
+  static copyOf(source: Order, mutator: (draft: MutableModel<Order, OrderMetaData>) => MutableModel<Order, OrderMetaData> | void): Order;
 }
 
 export declare class OrderItem {
@@ -33,6 +45,6 @@ export declare class OrderItem {
   readonly status?: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;
-  constructor(init: ModelInit<OrderItem>);
-  static copyOf(source: OrderItem, mutator: (draft: MutableModel<OrderItem>) => MutableModel<OrderItem> | void): OrderItem;
+  constructor(init: ModelInit<OrderItem, OrderItemMetaData>);
+  static copyOf(source: OrderItem, mutator: (draft: MutableModel<OrderItem, OrderItemMetaData>) => MutableModel<OrderItem, OrderItemMetaData> | void): OrderItem;
 }
