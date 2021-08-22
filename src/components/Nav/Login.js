@@ -13,7 +13,7 @@ export default function Login({ props }) {
 
     async function xummSign() {
         console.log('test')
-        await fetch('/payload', {
+        await fetch('/gbc/payload', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
