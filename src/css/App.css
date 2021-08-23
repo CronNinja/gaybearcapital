@@ -128,3 +128,9 @@ ul {
 .error-text{
   color: red;
 }
+
+/* Xumm */
+.xummQR{
+  width: 196px;
+  height: 196px;
+}

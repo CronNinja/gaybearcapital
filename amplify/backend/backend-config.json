@@ -44,5 +44,12 @@
         }
       }
     }
+  },
+  "function": {
+    "gaybearcapital39fb40e1": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
   }
 }
